@@ -1,0 +1,9 @@
+<resources>
+    <string name="permission_camera_rationale">Access to the camera is needed for detection</string>
+    <string name="ok">OK</string>
+    <string name="app_name">Demo ocr</string>
+    <string name="ocr_error">"Error reading text: %1$s"</string>
+    <string name="low_storage_error">Ocr dependencies cannot be downloaded due to low device storage</string>
+    <string name="no_camera_permission">This application cannot run because it does not have the camera permission.  The application will now exit.</string>
+
+</resources>
