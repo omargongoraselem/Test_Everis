@@ -234,6 +234,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
 
 
+
     private void  getDomicilio(String text){
         if (list.size() == 1) {
             int inicio = text.indexOf("DOMICILIO");
@@ -263,6 +264,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         switch (palabra){
             case"NOMBRE":
                 getNombre(text);
+
 
                 break;
             case "DOMICILIO":

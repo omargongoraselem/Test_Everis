@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\hsanchro\\Music\\android-vision-master 2 (1)\\android-vision-master\\visionSamples\\ocr-reader\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-si-rLK\\values-si-rLK.xml",
+            "outputFile": "C:\\Users\\hsanchro\\Documents\\Proyecto en git\\Test_Everis\\Android\\ocr-reader\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-si-rLK\\values-si-rLK.xml",
             "map": [
                 {
                     "source": "C:\\Users\\hsanchro\\.gradle\\caches\\transforms-2\\files-2.1\\53b3f1d95f4057197be82d369b217640\\appcompat-v7-24.2.0\\res\\values-si-rLK\\values-si-rLK.xml",

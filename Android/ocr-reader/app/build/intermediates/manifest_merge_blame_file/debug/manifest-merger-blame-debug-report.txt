@@ -7,66 +7,66 @@
 7
 8    <uses-sdk
 9        android:minSdkVersion="9"
-9-->C:\Users\hsanchro\Music\android-vision-master 2 (1)\android-vision-master\visionSamples\ocr-reader\app\src\main\AndroidManifest.xml
+9-->C:\Users\hsanchro\Documents\Proyecto en git\Test_Everis\Android\ocr-reader\app\src\main\AndroidManifest.xml
 10        android:targetSdkVersion="23" />
-10-->C:\Users\hsanchro\Music\android-vision-master 2 (1)\android-vision-master\visionSamples\ocr-reader\app\src\main\AndroidManifest.xml
+10-->C:\Users\hsanchro\Documents\Proyecto en git\Test_Everis\Android\ocr-reader\app\src\main\AndroidManifest.xml
 11
 12    <uses-feature android:name="android.hardware.camera" />
-12-->C:\Users\hsanchro\Music\android-vision-master 2 (1)\android-vision-master\visionSamples\ocr-reader\app\src\main\AndroidManifest.xml:6:5-60
-12-->C:\Users\hsanchro\Music\android-vision-master 2 (1)\android-vision-master\visionSamples\ocr-reader\app\src\main\AndroidManifest.xml:6:19-57
+12-->C:\Users\hsanchro\Documents\Proyecto en git\Test_Everis\Android\ocr-reader\app\src\main\AndroidManifest.xml:6:5-60
+12-->C:\Users\hsanchro\Documents\Proyecto en git\Test_Everis\Android\ocr-reader\app\src\main\AndroidManifest.xml:6:19-57
 13
 14    <uses-permission android:name="android.permission.CAMERA" />
-14-->C:\Users\hsanchro\Music\android-vision-master 2 (1)\android-vision-master\visionSamples\ocr-reader\app\src\main\AndroidManifest.xml:8:5-65
-14-->C:\Users\hsanchro\Music\android-vision-master 2 (1)\android-vision-master\visionSamples\ocr-reader\app\src\main\AndroidManifest.xml:8:22-62
+14-->C:\Users\hsanchro\Documents\Proyecto en git\Test_Everis\Android\ocr-reader\app\src\main\AndroidManifest.xml:8:5-65
+14-->C:\Users\hsanchro\Documents\Proyecto en git\Test_Everis\Android\ocr-reader\app\src\main\AndroidManifest.xml:8:22-62
 15
 16    <application
-16-->C:\Users\hsanchro\Music\android-vision-master 2 (1)\android-vision-master\visionSamples\ocr-reader\app\src\main\AndroidManifest.xml:10:5-34:19
+16-->C:\Users\hsanchro\Documents\Proyecto en git\Test_Everis\Android\ocr-reader\app\src\main\AndroidManifest.xml:10:5-34:19
 17        android:allowBackup="true"
-17-->C:\Users\hsanchro\Music\android-vision-master 2 (1)\android-vision-master\visionSamples\ocr-reader\app\src\main\AndroidManifest.xml:11:9-35
+17-->C:\Users\hsanchro\Documents\Proyecto en git\Test_Everis\Android\ocr-reader\app\src\main\AndroidManifest.xml:11:9-35
 18        android:debuggable="true"
 19        android:fullBackupContent="false"
-19-->C:\Users\hsanchro\Music\android-vision-master 2 (1)\android-vision-master\visionSamples\ocr-reader\app\src\main\AndroidManifest.xml:12:9-42
+19-->C:\Users\hsanchro\Documents\Proyecto en git\Test_Everis\Android\ocr-reader\app\src\main\AndroidManifest.xml:12:9-42
 20        android:hardwareAccelerated="true"
-20-->C:\Users\hsanchro\Music\android-vision-master 2 (1)\android-vision-master\visionSamples\ocr-reader\app\src\main\AndroidManifest.xml:13:9-43
+20-->C:\Users\hsanchro\Documents\Proyecto en git\Test_Everis\Android\ocr-reader\app\src\main\AndroidManifest.xml:13:9-43
 21        android:icon="@drawable/icon"
-21-->C:\Users\hsanchro\Music\android-vision-master 2 (1)\android-vision-master\visionSamples\ocr-reader\app\src\main\AndroidManifest.xml:14:9-38
+21-->C:\Users\hsanchro\Documents\Proyecto en git\Test_Everis\Android\ocr-reader\app\src\main\AndroidManifest.xml:14:9-38
 22        android:label="MultiTrackerApp"
-22-->C:\Users\hsanchro\Music\android-vision-master 2 (1)\android-vision-master\visionSamples\ocr-reader\app\src\main\AndroidManifest.xml:15:9-40
+22-->C:\Users\hsanchro\Documents\Proyecto en git\Test_Everis\Android\ocr-reader\app\src\main\AndroidManifest.xml:15:9-40
 23        android:supportsRtl="true"
-23-->C:\Users\hsanchro\Music\android-vision-master 2 (1)\android-vision-master\visionSamples\ocr-reader\app\src\main\AndroidManifest.xml:16:9-37
+23-->C:\Users\hsanchro\Documents\Proyecto en git\Test_Everis\Android\ocr-reader\app\src\main\AndroidManifest.xml:16:9-37
 24        android:testOnly="true"
 25        android:theme="@style/Theme.AppCompat" >
-25-->C:\Users\hsanchro\Music\android-vision-master 2 (1)\android-vision-master\visionSamples\ocr-reader\app\src\main\AndroidManifest.xml:17:9-47
+25-->C:\Users\hsanchro\Documents\Proyecto en git\Test_Everis\Android\ocr-reader\app\src\main\AndroidManifest.xml:17:9-47
 26        <meta-data
-26-->C:\Users\hsanchro\Music\android-vision-master 2 (1)\android-vision-master\visionSamples\ocr-reader\app\src\main\AndroidManifest.xml:18:9-20:35
+26-->C:\Users\hsanchro\Documents\Proyecto en git\Test_Everis\Android\ocr-reader\app\src\main\AndroidManifest.xml:18:9-20:35
 27            android:name="com.google.android.gms.vision.DEPENDENCIES"
-27-->C:\Users\hsanchro\Music\android-vision-master 2 (1)\android-vision-master\visionSamples\ocr-reader\app\src\main\AndroidManifest.xml:19:13-70
+27-->C:\Users\hsanchro\Documents\Proyecto en git\Test_Everis\Android\ocr-reader\app\src\main\AndroidManifest.xml:19:13-70
 28            android:value="ocr" />
-28-->C:\Users\hsanchro\Music\android-vision-master 2 (1)\android-vision-master\visionSamples\ocr-reader\app\src\main\AndroidManifest.xml:20:13-32
+28-->C:\Users\hsanchro\Documents\Proyecto en git\Test_Everis\Android\ocr-reader\app\src\main\AndroidManifest.xml:20:13-32
 29
 30        <activity
-30-->C:\Users\hsanchro\Music\android-vision-master 2 (1)\android-vision-master\visionSamples\ocr-reader\app\src\main\AndroidManifest.xml:22:9-30:20
+30-->C:\Users\hsanchro\Documents\Proyecto en git\Test_Everis\Android\ocr-reader\app\src\main\AndroidManifest.xml:22:9-30:20
 31            android:name="com.google.android.gms.samples.vision.ocrreader.MainActivity"
-31-->C:\Users\hsanchro\Music\android-vision-master 2 (1)\android-vision-master\visionSamples\ocr-reader\app\src\main\AndroidManifest.xml:23:13-88
+31-->C:\Users\hsanchro\Documents\Proyecto en git\Test_Everis\Android\ocr-reader\app\src\main\AndroidManifest.xml:23:13-88
 32            android:label="@string/title_activity_main" >
-32-->C:\Users\hsanchro\Music\android-vision-master 2 (1)\android-vision-master\visionSamples\ocr-reader\app\src\main\AndroidManifest.xml:24:13-56
+32-->C:\Users\hsanchro\Documents\Proyecto en git\Test_Everis\Android\ocr-reader\app\src\main\AndroidManifest.xml:24:13-56
 33            <intent-filter>
-33-->C:\Users\hsanchro\Music\android-vision-master 2 (1)\android-vision-master\visionSamples\ocr-reader\app\src\main\AndroidManifest.xml:25:13-29:29
+33-->C:\Users\hsanchro\Documents\Proyecto en git\Test_Everis\Android\ocr-reader\app\src\main\AndroidManifest.xml:25:13-29:29
 34                <action android:name="android.intent.action.MAIN" />
-34-->C:\Users\hsanchro\Music\android-vision-master 2 (1)\android-vision-master\visionSamples\ocr-reader\app\src\main\AndroidManifest.xml:26:17-69
-34-->C:\Users\hsanchro\Music\android-vision-master 2 (1)\android-vision-master\visionSamples\ocr-reader\app\src\main\AndroidManifest.xml:26:25-66
+34-->C:\Users\hsanchro\Documents\Proyecto en git\Test_Everis\Android\ocr-reader\app\src\main\AndroidManifest.xml:26:17-69
+34-->C:\Users\hsanchro\Documents\Proyecto en git\Test_Everis\Android\ocr-reader\app\src\main\AndroidManifest.xml:26:25-66
 35
 36                <category android:name="android.intent.category.LAUNCHER" />
-36-->C:\Users\hsanchro\Music\android-vision-master 2 (1)\android-vision-master\visionSamples\ocr-reader\app\src\main\AndroidManifest.xml:28:17-77
-36-->C:\Users\hsanchro\Music\android-vision-master 2 (1)\android-vision-master\visionSamples\ocr-reader\app\src\main\AndroidManifest.xml:28:27-74
+36-->C:\Users\hsanchro\Documents\Proyecto en git\Test_Everis\Android\ocr-reader\app\src\main\AndroidManifest.xml:28:17-77
+36-->C:\Users\hsanchro\Documents\Proyecto en git\Test_Everis\Android\ocr-reader\app\src\main\AndroidManifest.xml:28:27-74
 37            </intent-filter>
 38        </activity>
 39        <activity
-39-->C:\Users\hsanchro\Music\android-vision-master 2 (1)\android-vision-master\visionSamples\ocr-reader\app\src\main\AndroidManifest.xml:32:9-33:41
+39-->C:\Users\hsanchro\Documents\Proyecto en git\Test_Everis\Android\ocr-reader\app\src\main\AndroidManifest.xml:32:9-33:41
 40            android:name="com.google.android.gms.samples.vision.ocrreader.OcrCaptureActivity"
-40-->C:\Users\hsanchro\Music\android-vision-master 2 (1)\android-vision-master\visionSamples\ocr-reader\app\src\main\AndroidManifest.xml:32:19-100
+40-->C:\Users\hsanchro\Documents\Proyecto en git\Test_Everis\Android\ocr-reader\app\src\main\AndroidManifest.xml:32:19-100
 41            android:label="Read Text" />
-41-->C:\Users\hsanchro\Music\android-vision-master 2 (1)\android-vision-master\visionSamples\ocr-reader\app\src\main\AndroidManifest.xml:33:13-38
+41-->C:\Users\hsanchro\Documents\Proyecto en git\Test_Everis\Android\ocr-reader\app\src\main\AndroidManifest.xml:33:13-38
 42        <activity
 42-->[com.google.android.gms:play-services-base:9.4.0] C:\Users\hsanchro\.gradle\caches\transforms-2\files-2.1\1a16594cffa0d2523633cb4c2bdf8fd2\play-services-base-9.4.0\AndroidManifest.xml:20:9-22:45
 43            android:name="com.google.android.gms.common.api.GoogleApiActivity"

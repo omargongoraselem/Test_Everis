@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/ocr-reader.iml" filepath="$PROJECT_DIR$/ocr-reader.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="ocr-reader/app" />
+      <module fileurl="file://$PROJECT_DIR$/ocr-reader.iml" filepath="$PROJECT_DIR$/ocr-reader.iml" group="ocr-reader" />
     </modules>
   </component>
 </project>

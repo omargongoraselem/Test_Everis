@@ -9,7 +9,9 @@ import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.TextView;
 
+import com.example.demoocr.imgocr.ImageDetectedOcr;
 import com.google.android.gms.common.api.CommonStatusCodes;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -18,6 +20,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView statusMessage;
     private TextView textValue;
     String textValorS="";
+    FloatingActionButton floatingActionButton;
 
 
     private static final int RC_OCR_CAPTURE = 9003;
@@ -33,6 +36,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         autoFocus =  findViewById(R.id.auto_focus);
         useFlash =  findViewById(R.id.use_flash);
+        floatingActionButton = findViewById(R.id.floatingActionButton);
+
+        floatingActionButton.setOnClickListener(this);
 
         findViewById(R.id.read_text).setOnClickListener(this);
 
@@ -71,6 +77,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             textValue.setText("");
             textValorS = "";
             startActivityForResult(intent, RC_OCR_CAPTURE);
+        }else  if (v.getId() == R.id.floatingActionButton){
+            Intent intent= new Intent(this, ImageDetectedOcr.class);
+            startActivity(intent);
         }
     }
 }
