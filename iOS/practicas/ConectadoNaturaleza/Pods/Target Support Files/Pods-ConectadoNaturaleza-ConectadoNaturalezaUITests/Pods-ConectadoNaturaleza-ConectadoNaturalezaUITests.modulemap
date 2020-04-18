@@ -1,0 +1,6 @@
+module Pods_ConectadoNaturaleza_ConectadoNaturalezaUITests {
+  umbrella header "Pods-ConectadoNaturaleza-ConectadoNaturalezaUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

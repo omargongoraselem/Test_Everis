@@ -1,0 +1,6 @@
+module Pods_ConectadoNaturaleza {
+  umbrella header "Pods-ConectadoNaturaleza-umbrella.h"
+
+  export *
+  module * { export * }
+}
