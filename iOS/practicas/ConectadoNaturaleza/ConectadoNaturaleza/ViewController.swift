@@ -6,13 +6,24 @@
 //  Copyright © 2020 Marisol Perez Rangel. All rights reserved.
 //
 
+struct Login: Codable {
+    let page: String
+    let per_page: Int
+}
+
 import UIKit
+import Alamofire
+// import AlamofireObjectMapper
 
 class ViewController: UIViewController {
+    
+    @IBOutlet weak var userLabel: UILabel!
+    @IBOutlet weak var passwordLabel: UILabel! 
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        fetchService()
     }
     
     // Endpoint: https://reqres.in/api/register
@@ -28,20 +39,29 @@ class ViewController: UIViewController {
             return
         }
         
-        URLSession.shared.dataTask(with: endpoint) { (data: Data?, _, error: Error?) in
-            if error != nil {
+        // let login = Login(email: "eve.holt@reqres.in", password: "password")
+        
+        AF.request(endpoint, method: .post, parameters: nil).responseData { (response: AFDataResponse<Data>) in
+            if response.error != nil {
                 print("error")
                 return
             }
-            guard let dataFromService = data, let dictionary = try? JSONSerialization.jsonObject(with: dataFromService, options: []) as? [String: Any] else {
-                return
+            guard
+                let dataFromService = response.data,
+                let model = try? JSONDecoder().decode(Login.self, from: dataFromService)
+                
+            else {
+                    return
+                }
+            
+            DispatchQueue.main.async {
+                let stringPage = String(model.page)
+                print(stringPage)
+                self.userLabel.text = stringPage
+                //self.passwordLabel.text = model.age
             }
-            print(dictionary["name"] as? String ?? "error2")
+            //debugPrint(response)
         }
     }
-    
-    
-    
-    
 }
 
