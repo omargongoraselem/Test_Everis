@@ -156,6 +156,9 @@
                                                 <state key="normal" title="Ingresa aquí">
                                                     <color key="titleColor" name="GreenColor"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="ingresaButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="guC-U6-GhW"/>
+                                                </connections>
                                             </button>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yES-6H-vo9">
                                                 <rect key="frame" x="43.333333333333343" y="213.33333333333337" width="51" height="31"/>
@@ -214,10 +217,6 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <connections>
-                        <outlet property="passwordLabel" destination="ifO-zG-YaE" id="mEc-aE-pox"/>
-                        <outlet property="userLabel" destination="3QT-ya-ryJ" id="rXk-TB-abH"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
