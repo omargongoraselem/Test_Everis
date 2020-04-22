@@ -2,16 +2,34 @@
 //  LoginService.swift
 //  ConectadoNaturaleza
 //
-//  Created by Marisol Perez Rangel on 21/04/20.
-//  Copyright © 2020 Marisol Perez Rangel. All rights reserved.
+//  Created by Marisol Reyes Espino on 21/04/20.
+//  Copyright © 2020 Marisol Reyes Espino. All rights reserved.
 //
 
 import Foundation
 import ObjectMapper
 
 class LoginService: Mappable {
+    
+    var logins: [DataLogin]?
+    
     required init?(map: Map) {
         
+    }
+    
+    func mapping(map: Map) {
+        logins <- map["Response Body"]
+    }
+    
+}
+
+class DataLogin: Mappable {
+
+    var id: Int?
+    var token: String?
+    
+    required init?(map: Map) {
+
     }
     
     func mapping(map: Map) {
@@ -19,7 +37,5 @@ class LoginService: Mappable {
         token <- map["token"]
     }
     
-    var id: Int?
-    var token: String?
-    
 }
+
