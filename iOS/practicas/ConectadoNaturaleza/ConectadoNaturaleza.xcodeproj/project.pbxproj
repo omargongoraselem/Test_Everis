@@ -11,6 +11,9 @@
 		0CA7EC41CE050BD956FE4A6C /* libPods-ConectadoNaturalezaTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E76B344C6D985354669A4D2F /* libPods-ConectadoNaturalezaTests.a */; };
 		8748D6A45F6673EBD0855FDD /* libPods-ConectadoNaturaleza-ConectadoNaturalezaUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E3CD8C138D5BB68C0DD7438 /* libPods-ConectadoNaturaleza-ConectadoNaturalezaUITests.a */; };
 		B35AF631244F3FF400C9679E /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35AF630244F3FF400C9679E /* LoginService.swift */; };
+		B39048CF24510BEA0050E6C2 /* ColorsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39048CD24510BEA0050E6C2 /* ColorsTableViewCell.swift */; };
+		B39048D024510BEA0050E6C2 /* ColorsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B39048CE24510BEA0050E6C2 /* ColorsTableViewCell.xib */; };
+		B39048D224510E9C0050E6C2 /* ColorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39048D124510E9C0050E6C2 /* ColorsViewController.swift */; };
 		B3A7F435244A316400745329 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A7F434244A316400745329 /* AppDelegate.swift */; };
 		B3A7F437244A316400745329 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A7F436244A316400745329 /* SceneDelegate.swift */; };
 		B3A7F439244A316400745329 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A7F438244A316400745329 /* ViewController.swift */; };
@@ -47,6 +50,9 @@
 		822A4C14BF8E4882ACDA465A /* libPods-ConectadoNaturaleza.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ConectadoNaturaleza.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB850A2CF72A7AE340458F24 /* Pods-ConectadoNaturaleza.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConectadoNaturaleza.release.xcconfig"; path = "Target Support Files/Pods-ConectadoNaturaleza/Pods-ConectadoNaturaleza.release.xcconfig"; sourceTree = "<group>"; };
 		B35AF630244F3FF400C9679E /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
+		B39048CD24510BEA0050E6C2 /* ColorsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsTableViewCell.swift; sourceTree = "<group>"; };
+		B39048CE24510BEA0050E6C2 /* ColorsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ColorsTableViewCell.xib; sourceTree = "<group>"; };
+		B39048D124510E9C0050E6C2 /* ColorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsViewController.swift; sourceTree = "<group>"; };
 		B3A7F431244A316400745329 /* ConectadoNaturaleza.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConectadoNaturaleza.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3A7F434244A316400745329 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B3A7F436244A316400745329 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -118,6 +124,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B39048CC24510B730050E6C2 /* Table */ = {
+			isa = PBXGroup;
+			children = (
+				B39048CD24510BEA0050E6C2 /* ColorsTableViewCell.swift */,
+				B39048CE24510BEA0050E6C2 /* ColorsTableViewCell.xib */,
+				B39048D124510E9C0050E6C2 /* ColorsViewController.swift */,
+			);
+			path = Table;
+			sourceTree = "<group>";
+		};
 		B3A7F428244A316400745329 = {
 			isa = PBXGroup;
 			children = (
@@ -143,6 +159,7 @@
 		B3A7F433244A316400745329 /* ConectadoNaturaleza */ = {
 			isa = PBXGroup;
 			children = (
+				B39048CC24510B730050E6C2 /* Table */,
 				B3A7F464244A31D400745329 /* Resource */,
 				B3A7F434244A316400745329 /* AppDelegate.swift */,
 				B3A7F436244A316400745329 /* SceneDelegate.swift */,
@@ -298,6 +315,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3A7F441244A316600745329 /* LaunchScreen.storyboard in Resources */,
+				B39048D024510BEA0050E6C2 /* ColorsTableViewCell.xib in Resources */,
 				B3A7F467244A31FF00745329 /* Colors.xcassets in Resources */,
 				B3A7F43E244A316600745329 /* Assets.xcassets in Resources */,
 				B3A7F43C244A316400745329 /* Main.storyboard in Resources */,
@@ -398,6 +416,8 @@
 				B3A7F435244A316400745329 /* AppDelegate.swift in Sources */,
 				B3A7F437244A316400745329 /* SceneDelegate.swift in Sources */,
 				B35AF631244F3FF400C9679E /* LoginService.swift in Sources */,
+				B39048D224510E9C0050E6C2 /* ColorsViewController.swift in Sources */,
+				B39048CF24510BEA0050E6C2 /* ColorsTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

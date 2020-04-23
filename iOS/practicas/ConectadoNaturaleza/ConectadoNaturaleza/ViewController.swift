@@ -21,6 +21,8 @@ class ViewController: UIViewController {
         getUserInfo()
         .done { json -> Void in
             print(json)
+            print(json.id!)
+            print(json.token!)
         }
         .catch { error in
             print(error.localizedDescription)
@@ -37,7 +39,7 @@ class ViewController: UIViewController {
     let login = Login(email: "eve.holt@reqres.in", password: "password")
     let endpointString = "https://reqres.in/api/register"
     
-    func getUserInfo() -> Promise<[String: Any]> {
+    func getUserInfo() -> Promise<LoginService> {
         return Promise { seal in
             AF.request(endpointString, method: .post, parameters: login)
                 .validate()
@@ -47,13 +49,55 @@ class ViewController: UIViewController {
                         guard let json = json  as? [String: Any] else {
                             return seal.reject(AFError.responseValidationFailed(reason: .dataFileNil))
                         }
-                        seal.fulfill(json)
+                        let login = LoginService(JSON: json)
+                        seal.fulfill(login!)
                     case .failure(let error):
                         seal.reject(error)
                     }
                 }
             }
         }
+    
+   /*
+    func promiseLogin() -> Promise<[String: Any]>{
+        return Promise { resolver in
+            AF.request("https://reqres.in/api/register", method: .post, parameters: login).responseJSON {
+            response in
+            switch (response.result) {
+                case .success(let data):
+                    resolver.fulfill(data as! [String : Any])
+                
+                case .failure(let error):
+                    print(error)
+                    resolver.reject(error)
+                    
+                }
+            }
+        }
+    }
+    */
+    /*
+    private func fetchService() {
+        
+        let endpointString = "https://reqres.in/api/register"
+        guard let endpoint = URL(string: endpointString) else {
+            return
+        }
+        
+        let login = Login(email: "eve.holt@reqres.in", password: "password")
+        
+        AF.request(endpoint, method: .post, parameters: login, encoder: JSONParameterEncoder.default).response {
+            response in debugPrint(response)
+            if let data = response.data {
+                let json = String(data: data, encoding: String.Encoding.utf8)
+                print("JSON Response: \(String(describing: json))")
+                let loginService = LoginService(JSONString: json!)
+                print(loginService?.id)
+                print(loginService?.token)
+            }
+        }
+        
+    }*/
 }
 
 

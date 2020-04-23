@@ -10,27 +10,11 @@ import Foundation
 import ObjectMapper
 
 class LoginService: Mappable {
-    
-    var logins: [DataLogin]?
-    
-    required init?(map: Map) {
-        
-    }
-    
-    func mapping(map: Map) {
-        logins <- map["Response Body"]
-    }
-    
-}
 
-class DataLogin: Mappable {
-
-    var id: Int?
-    var token: String?
+    var id: Int!
+    var token: String!
     
-    required init?(map: Map) {
-
-    }
+    required init?(map: Map) { }
     
     func mapping(map: Map) {
         id <- map["id"]
