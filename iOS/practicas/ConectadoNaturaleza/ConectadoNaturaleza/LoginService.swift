@@ -11,8 +11,8 @@ import ObjectMapper
 
 class LoginService: Mappable {
 
-    var id: Int!
-    var token: String!
+    var id: Int?
+    var token: String?
     
     required init?(map: Map) { }
     

@@ -20,9 +20,15 @@ class ViewController: UIViewController {
     @IBAction func ingresaButton(_ sender: Any) {
         getUserInfo()
         .done { json -> Void in
-            print(json)
-            print(json.id!)
-            print(json.token!)
+            if (json.id! != nil) && (json.token! != "") {
+                print(json.id!)
+                print(json.token!)
+                /*let modalViewController = ColorViewController()
+                modalViewController.modalPresentationStyle = .overCurrentContext
+                self.present(modalViewController, animated: true, completion: nil)*/
+            } else {
+                
+            }
         }
         .catch { error in
             print(error.localizedDescription)
@@ -51,6 +57,7 @@ class ViewController: UIViewController {
                         }
                         let login = LoginService(JSON: json)
                         seal.fulfill(login!)
+                        print(login!)
                     case .failure(let error):
                         seal.reject(error)
                     }
