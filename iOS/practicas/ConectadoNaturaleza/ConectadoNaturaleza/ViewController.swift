@@ -23,11 +23,9 @@ class ViewController: UIViewController {
             if (json.id! != nil) && (json.token! != "") {
                 print(json.id!)
                 print(json.token!)
-                /*let modalViewController = ColorViewController()
-                modalViewController.modalPresentationStyle = .overCurrentContext
-                self.present(modalViewController, animated: true, completion: nil)*/
+                self.performSegue(withIdentifier: "login_segue", sender: nil)
             } else {
-                
+                print("Credenciales invalidas")
             }
         }
         .catch { error in

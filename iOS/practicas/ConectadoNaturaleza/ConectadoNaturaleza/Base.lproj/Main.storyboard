@@ -106,7 +106,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="noG-5m-CL0" kind="show" id="T5s-bg-p96"/>
+                                                    <segue destination="noG-5m-CL0" kind="show" id="jbX-q6-z3L"/>
                                                 </connections>
                                             </button>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Plug-right" translatesAutoresizingMaskIntoConstraints="NO" id="daD-T4-ein">
@@ -220,6 +220,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <segue destination="noG-5m-CL0" kind="show" identifier="login_segue" id="FS1-Rn-SdT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -228,7 +231,7 @@
         <!--Color View Controller-->
         <scene sceneID="yIn-5C-AO9">
             <objects>
-                <viewController id="noG-5m-CL0" customClass="ColorViewController" customModule="ConectadoNaturaleza" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StoryColor" id="noG-5m-CL0" customClass="ColorViewController" customModule="ConectadoNaturaleza" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mCL-0P-q59">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -257,6 +260,9 @@
             <point key="canvasLocation" x="1015.9420289855074" y="113.83928571428571"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="FS1-Rn-SdT"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="Logo-conecta" width="467" height="83.5"/>
         <image name="Logo-facebook" width="60" height="55"/>
