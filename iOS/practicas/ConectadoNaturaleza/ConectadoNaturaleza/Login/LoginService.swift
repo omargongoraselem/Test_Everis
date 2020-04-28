@@ -13,13 +13,19 @@ class LoginService: Mappable {
 
     var id: Int?
     var token: String?
+    var email: String?
+    var password: String?
     
-    required init?(map: Map) { }
+    
+    required init?(map: Map) {
+        email <- map["email"]
+        password <- map["password"]
+        
+    }
     
     func mapping(map: Map) {
         id <- map["id"]
         token <- map["token"]
     }
-    
 }
 

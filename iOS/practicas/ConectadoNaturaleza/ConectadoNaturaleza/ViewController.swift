@@ -14,7 +14,8 @@ import PromiseKit
 class ViewController: UIViewController {
     
     @IBAction func ingresaButton(_ sender: Any) {
-        
+        let loginView  = LoginViewController()
+            loginView.getStore()
     }
     
 

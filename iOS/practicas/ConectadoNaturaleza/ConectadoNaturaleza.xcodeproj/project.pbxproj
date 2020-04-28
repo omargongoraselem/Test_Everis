@@ -27,6 +27,7 @@
 		B3A7F44C244A316600745329 /* ConectadoNaturalezaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A7F44B244A316600745329 /* ConectadoNaturalezaTests.swift */; };
 		B3A7F457244A316600745329 /* ConectadoNaturalezaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A7F456244A316600745329 /* ConectadoNaturalezaUITests.swift */; };
 		B3A7F467244A31FF00745329 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3A7F466244A31FF00745329 /* Colors.xcassets */; };
+		B3B0B29C24575794001AF62E /* LoginStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B0B29B24575794001AF62E /* LoginStruct.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,7 @@
 		B3A7F456244A316600745329 /* ConectadoNaturalezaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConectadoNaturalezaUITests.swift; sourceTree = "<group>"; };
 		B3A7F458244A316600745329 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B3A7F466244A31FF00745329 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		B3B0B29B24575794001AF62E /* LoginStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginStruct.swift; sourceTree = "<group>"; };
 		CC72CD07AAF8656149DA62D2 /* Pods-ConectadoNaturalezaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConectadoNaturalezaTests.release.xcconfig"; path = "Target Support Files/Pods-ConectadoNaturalezaTests/Pods-ConectadoNaturalezaTests.release.xcconfig"; sourceTree = "<group>"; };
 		E76B344C6D985354669A4D2F /* libPods-ConectadoNaturalezaTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ConectadoNaturalezaTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8407B004496644BF63CB03B /* Pods-ConectadoNaturaleza-ConectadoNaturalezaUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConectadoNaturaleza-ConectadoNaturalezaUITests.debug.xcconfig"; path = "Target Support Files/Pods-ConectadoNaturaleza-ConectadoNaturalezaUITests/Pods-ConectadoNaturaleza-ConectadoNaturalezaUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 				B35AF630244F3FF400C9679E /* LoginService.swift */,
 				B34B579624539F9600421EFB /* LoginViewController.swift */,
 				B34B57992453A20400421EFB /* LoginApi.swift */,
+				B3B0B29B24575794001AF62E /* LoginStruct.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -440,6 +443,7 @@
 				B35AF631244F3FF400C9679E /* LoginService.swift in Sources */,
 				B39048D224510E9C0050E6C2 /* ColorViewController.swift in Sources */,
 				B34B579724539F9600421EFB /* LoginViewController.swift in Sources */,
+				B3B0B29C24575794001AF62E /* LoginStruct.swift in Sources */,
 				B39048CF24510BEA0050E6C2 /* ColorsTableViewCell.swift in Sources */,
 				B3664FCE2451D8E500071D49 /* ColorService.swift in Sources */,
 			);
