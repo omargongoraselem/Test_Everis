@@ -14,8 +14,19 @@ import PromiseKit
 class ViewController: UIViewController {
     
     @IBAction func ingresaButton(_ sender: Any) {
-        let loginView  = LoginViewController()
-            loginView.getStore()
+        /*let loginView  = LoginViewController()
+            loginView.getStore()*/
+        
+        if UserDefaults.standard.bool(forKey: "loginKey") == true {
+            /*
+           let home = self.storyboard?.instantiateViewController(withIdentifier: "StoryColor") as! ColorViewController
+           self.navigationController?.pushViewController(home, animated: false)
+             */
+            self.performSegue(withIdentifier: "colorSegue", sender: nil)
+        } else {
+            self.performSegue(withIdentifier: "loginSegue", sender: nil)
+        }
+               
     }
     
 

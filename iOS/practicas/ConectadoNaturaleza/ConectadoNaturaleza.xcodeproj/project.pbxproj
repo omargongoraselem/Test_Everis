@@ -11,7 +11,6 @@
 		0CA7EC41CE050BD956FE4A6C /* libPods-ConectadoNaturalezaTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E76B344C6D985354669A4D2F /* libPods-ConectadoNaturalezaTests.a */; };
 		8748D6A45F6673EBD0855FDD /* libPods-ConectadoNaturaleza-ConectadoNaturalezaUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E3CD8C138D5BB68C0DD7438 /* libPods-ConectadoNaturaleza-ConectadoNaturalezaUITests.a */; };
 		B34B579724539F9600421EFB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34B579624539F9600421EFB /* LoginViewController.swift */; };
-		B34B579A2453A20400421EFB /* LoginApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34B57992453A20400421EFB /* LoginApi.swift */; };
 		B35AF631244F3FF400C9679E /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35AF630244F3FF400C9679E /* LoginService.swift */; };
 		B3664FCE2451D8E500071D49 /* ColorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3664FCD2451D8E500071D49 /* ColorService.swift */; };
 		B3664FD0245207A800071D49 /* ColorApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3664FCF245207A800071D49 /* ColorApi.swift */; };
@@ -55,7 +54,6 @@
 		822A4C14BF8E4882ACDA465A /* libPods-ConectadoNaturaleza.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ConectadoNaturaleza.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB850A2CF72A7AE340458F24 /* Pods-ConectadoNaturaleza.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConectadoNaturaleza.release.xcconfig"; path = "Target Support Files/Pods-ConectadoNaturaleza/Pods-ConectadoNaturaleza.release.xcconfig"; sourceTree = "<group>"; };
 		B34B579624539F9600421EFB /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		B34B57992453A20400421EFB /* LoginApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginApi.swift; sourceTree = "<group>"; };
 		B35AF630244F3FF400C9679E /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		B3664FCD2451D8E500071D49 /* ColorService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorService.swift; sourceTree = "<group>"; };
 		B3664FCF245207A800071D49 /* ColorApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorApi.swift; sourceTree = "<group>"; };
@@ -139,7 +137,6 @@
 			children = (
 				B35AF630244F3FF400C9679E /* LoginService.swift */,
 				B34B579624539F9600421EFB /* LoginViewController.swift */,
-				B34B57992453A20400421EFB /* LoginApi.swift */,
 				B3B0B29B24575794001AF62E /* LoginStruct.swift */,
 			);
 			path = Login;
@@ -439,7 +436,6 @@
 				B3A7F435244A316400745329 /* AppDelegate.swift in Sources */,
 				B3664FD0245207A800071D49 /* ColorApi.swift in Sources */,
 				B3A7F437244A316400745329 /* SceneDelegate.swift in Sources */,
-				B34B579A2453A20400421EFB /* LoginApi.swift in Sources */,
 				B35AF631244F3FF400C9679E /* LoginService.swift in Sources */,
 				B39048D224510E9C0050E6C2 /* ColorViewController.swift in Sources */,
 				B34B579724539F9600421EFB /* LoginViewController.swift in Sources */,

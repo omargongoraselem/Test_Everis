@@ -158,7 +158,7 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="ingresaButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="guC-U6-GhW"/>
-                                                    <segue destination="qS5-ok-Yn2" kind="presentation" id="CAn-Rx-lWv"/>
+                                                    <segue destination="qS5-ok-Yn2" kind="presentation" identifier="loginSegue" id="CAn-Rx-lWv"/>
                                                 </connections>
                                             </button>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yES-6H-vo9">
@@ -219,6 +219,9 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="fWm-zm-bpc"/>
+                    <connections>
+                        <segue destination="noG-5m-CL0" kind="presentation" identifier="colorSegue" id="I3z-xF-7g6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -335,7 +338,7 @@
                         <outlet property="emailTextField" destination="WIp-9k-kYS" id="4st-qc-NpI"/>
                         <outlet property="passwordTextField" destination="Z4A-J5-Jyp" id="HTX-ce-viW"/>
                         <outlet property="segueSwitch" destination="UB0-SZ-o4s" id="N52-Ai-KoT"/>
-                        <segue destination="noG-5m-CL0" kind="presentation" identifier="login_segue" id="mMV-tY-dqs"/>
+                        <segue destination="noG-5m-CL0" kind="presentation" identifier="colorSegue" id="qeZ-2z-1tA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DBq-o7-2iB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -374,6 +377,9 @@
             <point key="canvasLocation" x="1926.0869565217392" y="113.83928571428571"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="qeZ-2z-1tA"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="Logo-conecta" width="467" height="83.5"/>
         <image name="Logo-facebook" width="60" height="55"/>

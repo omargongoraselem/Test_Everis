@@ -3,7 +3,7 @@
 //  ConectadoNaturaleza
 //
 //  Created by Marisol Reyes Espino on 24/04/20.
-//  Copyright © 2020 Marisol Perez Rangel. All rights reserved.
+//  Copyright © 2020 Marisol Reyes Espino. All rights reserved.
 //
 
 import UIKit
@@ -21,22 +21,15 @@ class LoginViewController: UIViewController {
         .done { json -> Void in
             print(json.id!)
             print(json.token!)
-           
-            if self.segueSwitch.isOn {
-                //self.store.set(true, forKey: self.segueKey)
-                //  theSwitch.setOn(UserDefaults.standard.bool(forKey: "onoroff"), animated: false)
-                self.store.set(true, forKey: self.segueKey)
-                print("segueSwitch")
-                self.performSegue(withIdentifier: "login_segue", sender: nil)
-            } else {
-                self.store.set(false, forKey: self.segueKey)
-                print("no segueSwitch")
-                self.performSegue(withIdentifier: "login_segue", sender: nil)
-                //self.store.removeObject(forKey: self.segueKey)
-                
-            }
             
-
+            if json.id == 4 && json.token == "QpwL5tke4Pnpja7X4" {
+                if self.segueSwitch.isOn {
+                    UserDefaults.standard.set(true, forKey: "loginKey")
+                } else {
+                    UserDefaults.standard.set(false, forKey: "loginKey")
+                }
+                self.performSegue(withIdentifier: "colorSegue", sender: nil)
+            }
         }
         .catch { error in
             let alert = UIAlertController(title: "Mensaje", message: "Datos invalidos", preferredStyle: .alert)
@@ -48,22 +41,8 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getStore()
-        
     }
     
-    private let segueKey = "key"
-    private let store = UserDefaults.standard
-    
-    func getStore()  {
-        if store.object(forKey: segueKey) != nil {
-            segueSwitch.isOn = store.bool(forKey: segueKey)
-            print("viewdidload switch")
-        } else {
-            print("no viewdidload switch")
-        }
-    }
-
     func getUserInfo() -> Promise<LoginService> {
         return Promise { seal in
             
