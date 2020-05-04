@@ -1,33 +1,21 @@
-package com.example.demoocr.imgocr;
+package com.example.cutocr;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 
-import android.Manifest;
-import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.util.SparseArray;
-import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.demoocr.R;
 import com.google.android.gms.vision.Frame;
 import com.google.android.gms.vision.text.TextBlock;
 import com.google.android.gms.vision.text.TextRecognizer;
-import com.theartofdev.edmodo.cropper.CropImage;
-import com.theartofdev.edmodo.cropper.CropImageView;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -35,106 +23,105 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
-public class ImageDetectedOcr extends AppCompatActivity implements View.OnClickListener {
-    private static final int MY_PERMISSION_STORAGE = 1;
-    Button captureBtm;// ocrBtn;
-    ImageView cameraImg;
-    static final int REQUEST_IMAGE_CAPTURE = 1;
-    String TAG="ImageOCR";
-    TextView txtresult;
-///ALgoritmo
-    String textValorS="";
-    //reconocimiento de datos TAG existentes
-    String[] identificador={"LOCALIDAD","DOMICILIO","CURP","CLAVE DE ELECTOR","ESTADO","MUNICIPIO","NOMBRE","SECCION","EMISION","VIGENCIA",
-            "FECHA DE NACIMIENTO"};
-    //Listapara almacenar TAGs encontrados en el documento
-    String[] idLargos={"CLAVE","AÑO","FECHA"};
-
-    List<String> list = new ArrayList<>();
-
-
+public class readerOCR extends AppCompatActivity {
+    TextView resultText,tipotxt;
+    ImageView imageView;
+    String textFinal = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_image_detected_ocr);
+        setContentView(R.layout.activity_reader_o_c_r);
+        resultText = findViewById(R.id.txtResult);
+        imageView = findViewById(R.id.img2);
+        tipotxt = findViewById(R.id.txtTipo);
 
-        captureBtm = findViewById(R.id.btnCamara);
-      //  ocrBtn = findViewById(R.id.btnOcr);
-        cameraImg = findViewById(R.id.img);
-        txtresult = findViewById(R.id.txtResult);
+        Bundle extras = getIntent().getExtras();
+        Object img = extras.get("imagen");
+        Uri image = (Uri) img;
 
-        //ocrBtn.setOnClickListener(this);
-        captureBtm.setOnClickListener(this);
-
-
-
-    }
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-            case  R.id.btnCamara:
-  //              dispatchTakePictureIntent();
-                m();
-                break;
-            /*case R.id.btnOcr:
-    //            getTextFromImage();
-                break;*/
+        imageView.setImageURI(image);
+        Bitmap bitmapResult = null;
+        try {
+            bitmapResult = MediaStore.Images.Media.getBitmap(this.getContentResolver() , image);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+
+        getTextTipo(bitmapResult);
+
     }
 
 
-    public void m(){
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED &&
-                ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, MY_PERMISSION_STORAGE);
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, MY_PERMISSION_STORAGE);
-        } else {
-            CropImage.activity()
-                    .setGuidelines(CropImageView.Guidelines.ON)
-                    .setAspectRatio(1, 1) //You can skip this for free form aspect ratio)
-                    .start(this);
-        }
-    }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
-            CropImage.ActivityResult result = CropImage.getActivityResult(data);
-            if (resultCode == RESULT_OK) {
-                Uri resultUri = result.getUri();
-                // Set uri as Image in the ImageView:
-               //cameraImg.setImageURI(resultUri);
-                try {
-                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver() , resultUri);
-                    cameraImg.setImageBitmap(redimensionarImagen(bitmap));
-                    getTextFromImage(bitmap);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
-                // Bitmap bitmap= result.getBitmap();
-                //cameraImg.setImageBitmap(bitmap);
-            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
-                Exception error = result.getError();
+    private void getTextTipo(Bitmap image){
+            String texto = getTextFromImage(image);
+            String ocrText = texto.replaceAll("[-+.^*_]","");
+            if (ocrText.contains("CREDENCIAL PARA VOTAR")){
+                resultText.setText(null);
+                tipotxt.setText("CREDENCIAL PARA VOTAR");
+                tags(ocrText);
+//                resultText.setText(ocrText);
+            }else if (ocrText.contains("ESTADOS UNIDOS MEXICANOS")){
+                tipotxt.setText("ACTA DE NACIMIENTO");
+                resultText.setText(null);
+                textFinal += processNombre(image)+"\n";
+                textFinal += processFechaNacimiento(image)+"\n";
+                textFinal +=  processLugarNacimiento(image)+"\n";
+                resultText.setText(textFinal);
+            }else{
+                resultText.setText(null);
+                tipotxt.setText("otro tipo");
+                resultText.setText(ocrText);
             }
-        }
+     //       resultText.setText(ocrText);
     }
 
 
-
-    public Bitmap redimensionarImagen(Bitmap img){
-        //se toma como referencia para las nuevas medidas el tamaño en píxeles de la pantalla del terminal
-        int newWidth = (getApplicationContext().getResources().getDisplayMetrics().widthPixels*4)/5;
-        int newHeight = getApplicationContext().getResources().getDisplayMetrics().heightPixels/4;
-        Bitmap resizedBitmap=Bitmap.createScaledBitmap(img, newWidth, newHeight, false);
-        return resizedBitmap;
+//Nombre
+    private String processNombre(Bitmap bitmap) {
+        String rest = "";
+        Bitmap bitmap2;
+        Matrix matrix = new Matrix();
+        //int yc = (int) ((bitmap.getHeight() ) - (bitmap.getHeight() * 0.19));
+        int yc = (int) (bitmap.getHeight() * 0.28);//626
+        Bitmap bitmapTemp = Bitmap.createBitmap(bitmap, 0, yc, (int) (bitmap.getWidth() ), 90);
+            bitmap2 = Bitmap.createBitmap(bitmapTemp, 0, 0, bitmapTemp.getWidth(), bitmapTemp.getHeight(), matrix, true);
+            imageView.setImageBitmap(bitmap2);
+            rest = getTextFromImage(bitmap2);
+            return rest;
+    }
+//fecha de nacimiento
+    private String processFechaNacimiento(Bitmap bitmap) {
+        Bitmap bitmap2;
+        String rest = "";
+        Matrix matrix = new Matrix();
+        //int yc = (int) ((bitmap.getHeight() ) - (bitmap.getHeight() * 0.19));
+        int yc = (int) (bitmap.getHeight() * 0.30);//626
+        Bitmap bitmapTemp = Bitmap.createBitmap(bitmap, 0, yc, (int) (bitmap.getWidth() ), 90);
+        bitmap2 = Bitmap.createBitmap(bitmapTemp, 0, 0, bitmapTemp.getWidth(), bitmapTemp.getHeight(), matrix, true);
+        imageView.setImageBitmap(bitmap2);
+        rest = getTextFromImage(bitmap2);
+        return rest;
+    }
+    //fecha de nacimiento
+    private String processLugarNacimiento(Bitmap bitmap) {
+        Bitmap bitmap2;
+        String rest;
+        Matrix matrix = new Matrix();
+        //int yc = (int) ((bitmap.getHeight() ) - (bitmap.getHeight() * 0.19));
+        int yc = (int) (bitmap.getHeight() * 0.34);//626
+        Bitmap bitmapTemp = Bitmap.createBitmap(bitmap, 0, yc, (int) (bitmap.getWidth() ), 50);
+        bitmap2 = Bitmap.createBitmap(bitmapTemp, 0, 0, bitmapTemp.getWidth(), bitmapTemp.getHeight(), matrix, true);
+        imageView.setImageBitmap(bitmap2);
+        rest = getTextFromImage(bitmap2);
+        return rest;
     }
 
 
-    //pasamos la imagen como bitmap
-    private void getTextFromImage(Bitmap image){
+//Para obtener datos
+    private String getTextFromImage(Bitmap image){
+        String result="";
         TextRecognizer textRecognizer = new TextRecognizer.Builder(getApplicationContext()).build();
         if (!textRecognizer.isOperational()){
             Toast.makeText(this,"No se encontro texto",Toast.LENGTH_LONG).show();
@@ -144,20 +131,29 @@ public class ImageDetectedOcr extends AppCompatActivity implements View.OnClickL
             StringBuilder sB = new StringBuilder();
             for (int i = 0; i < items.size() ; i++){
                 TextBlock myItem = items.valueAt(i);
-                sB.append(myItem.getValue());
-                sB.append("\n");
+                    sB.append(myItem.getValue());
+                    sB.append("\n");
             }
             Log.e("TEXTO",sB.toString());
-            //txtresult.setText(sB.toString());
-            tags(sB.toString());
-            textValorS ="";
+            result = sB.toString();
         }
-
+        String ocrText = result.replaceAll("[-+.^*_]","");
+        return ocrText;
     }
 
 
 
+    //_____________________ OCR para ine ife______________________________
+    String TAG="ImageOCR";
+    ///ALgoritmo
+    String textValorS="";
+    //reconocimiento de datos TAG existentes
+    String[] identificador={"LOCALIDAD","DOMICILIO","CURP","CLAVE DE ELECTOR","ESTADO","MUNICIPIO","NOMBRE","SECCION","EMISION","VIGENCIA",
+            "FECHA DE NACIMIENTO"};
+    //Listapara almacenar TAGs encontrados en el documento
+    String[] idLargos={"CLAVE","AÑO","FECHA"};
 
+    List<String> list = new ArrayList<>();
 
 
     //primer paso pasar cadena a mayuscula
@@ -169,7 +165,7 @@ public class ImageDetectedOcr extends AppCompatActivity implements View.OnClickL
         String replaceP = mayusculas.replaceAll("[-+.^:,*_]","");
         String replace = replaceP.replaceAll("\n"," ");
         String[] arrayTexto= replace.split(" ");
-      Log.e("TEX",replace);
+        Log.e("TEX",replace);
         for (int x=0;x<arrayTexto.length;x++){
             for (int i = 0 ; i < identificador.length ; i++){
                 if(arrayTexto[x].equals(identificador[i])){
@@ -239,7 +235,7 @@ public class ImageDetectedOcr extends AppCompatActivity implements View.OnClickL
             Log.e("Nombre ",text.substring(inicio + 7, fin));*/
 
             textValorS +="\nNombre: "+nomb ;
-            txtresult.setText(textValorS);
+             resultText.setText(textValorS);
         }else {
             for (int i = 0; i < list.size(); i++) {
                 boolean intIndex = text.contains(list.get(i));
@@ -260,7 +256,7 @@ public class ImageDetectedOcr extends AppCompatActivity implements View.OnClickL
                         }
 
                         textValorS +="\nNombre: "+nomb;
-                        txtresult.setText(textValorS);
+                        resultText.setText(textValorS);
                     }
                 }
             }
@@ -277,7 +273,7 @@ public class ImageDetectedOcr extends AppCompatActivity implements View.OnClickL
             }
         }
         textValorS +="\nNombre: "+result;
-        txtresult.setText(textValorS);
+        // txtresult.setText(textValorS);
 
 
     }
@@ -294,7 +290,7 @@ public class ImageDetectedOcr extends AppCompatActivity implements View.OnClickL
                 domicilio += arrayTexto[y]+" ";
             }
             textValorS +="\n Domicilio: "+domicilio;
-            txtresult.setText(textValorS);
+               resultText.setText(textValorS);
         }else {
             for (int i = 0; i < list.size(); i++) {
                 boolean intIndex = text.contains(list.get(i));
@@ -305,13 +301,13 @@ public class ImageDetectedOcr extends AppCompatActivity implements View.OnClickL
                         String dom = text.substring(inicio + 10, fin);
                         String[] arrayTexto= dom.split(" ");
                         String domicilio = "";
-                        for (int y = 0; y < 6;y++ ){
+                        for (int y = 0; y <= 4;y++ ){
                             domicilio += arrayTexto[y]+" ";
                         }
 
                         Log.e("DOMICILIO ",text.substring(inicio + 10, fin));
                         textValorS +="\n Domicilio: "+domicilio;
-                        txtresult.setText(textValorS);
+                        resultText.setText(textValorS);
                     }
                 }
             }
@@ -324,7 +320,7 @@ public class ImageDetectedOcr extends AppCompatActivity implements View.OnClickL
         switch (palabra){
             case"NOMBRE":
                 getNombre(text);
-             //   extractNameIFE(text);
+                //   extractNameIFE(text);
                 break;
             case "DOMICILIO":
                 getDomicilio(text);
@@ -370,81 +366,11 @@ public class ImageDetectedOcr extends AppCompatActivity implements View.OnClickL
         String textoTag = text.substring(inicio + separcion, fin);
         Log.e(tag, textoTag + "\n");
         textValorS+="\n"+tag+": "+ textoTag;
-        txtresult.setText(textValorS);
+        resultText.setText(textValorS);
 
     }
 
 
-
-
-
-
-/*
-     private void getTextFromImage(){
-        //pasamos la imagen como bitmap
-        Bitmap image =  BitmapFactory.decodeResource(getApplicationContext().getResources(),R.drawable.i);
-        TextRecognizer textRecognizer = new TextRecognizer.Builder(getApplicationContext()).build();
-        if (!textRecognizer.isOperational()){
-            Toast.makeText(this,"No se encontro texto",Toast.LENGTH_LONG).show();
-        }else {
-            Frame frame= new Frame.Builder().setBitmap(image).build();
-            SparseArray<TextBlock> items = textRecognizer.detect(frame);
-            StringBuilder sB = new StringBuilder();
-            for (int i = 0; i < items.size() ; i++){
-                TextBlock myItem = items.valueAt(i);
-                sB.append(myItem.getValue());
-                sB.append("\n");
-            }
-            txtresult.setText(sB.toString());
-        }
-
-    }
-
-
-
-
-    private void dispatchTakePictureIntent() {
-        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
-        }
-    }
-
-
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        Bitmap bitmap = (Bitmap)data.getExtras().get("data");
-        cameraImg.setImageBitmap(bitmap);
-        getTextFromCamera(bitmap);
-
-    }
-
-
-    private void processImage(Bitmap bitmap) {
-        Bitmap bitmap2;
-
-        Matrix matrix = new Matrix();
-       // matrix.postRotate(90);
-        if (bitmap.getWidth() == bitmap.getHeight()) {
-            int xc = (int) ((bitmap.getWidth() / 2) - (bitmap.getWidth() * 0.213));
-            int yc = (int) ((bitmap.getHeight() / 2) - (bitmap.getHeight() * 0.327));
-            Bitmap bitmapTemp = Bitmap.createBitmap(bitmap, xc, yc, (int) (bitmap.getWidth() * 0.425), (int) (bitmap.getHeight() * 0.654));
-            bitmap2 = Bitmap.createBitmap(bitmapTemp, 0, 0, bitmapTemp.getWidth(), bitmapTemp.getHeight(), matrix, true);
-            cameraImg.setImageBitmap(bitmap2);
-
-        } else {
-            int xc = (int) ((bitmap.getWidth() / 2) - (bitmap.getWidth() * 0.37));
-            int yc = (int) ((bitmap.getHeight() / 2) - (bitmap.getHeight() * 0.19));
-            Bitmap bitmapTemp = Bitmap.createBitmap(bitmap, xc, yc, (int) (bitmap.getWidth() * 0.74), (int) (bitmap.getHeight() * 0.37));
-            bitmap2 = Bitmap.createBitmap(bitmapTemp, 0, 0, bitmapTemp.getWidth(), bitmapTemp.getHeight(), matrix, true);
-            cameraImg.setImageBitmap(bitmap2);
-            getTextFromCamera(bitmap2);
-        }
-    }
-
-
-*/
 
 
 }

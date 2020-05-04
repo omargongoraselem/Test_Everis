@@ -116,12 +116,10 @@ public class Fcm extends FirebaseMessagingService {
                     .setContentTitle(titulo)
                     .setSmallIcon(R.mipmap.ic_launcher)
                     .setContentText(detalle)
-                    .setContentIntent(clickNoty())
+                    .setContentIntent(tercero())
                     .setContentInfo("nuevo")
-                    .addAction(R.drawable.ic_notificarion, "Actividad 2",
-                    c())
-                    .addAction(R.drawable.ic_notificarion, "Actividad 3",
-                            c2());
+                    .addAction(0, "Actividad 2", tercero());
+//                    .addAction(R.drawable.ic_notificarion, "Actividad 3", n);
 
             Random random = new Random();
             int idNofify = random.nextInt(8000);
