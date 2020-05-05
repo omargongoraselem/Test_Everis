@@ -40,7 +40,7 @@ public class readerOCR extends AppCompatActivity {
         Object img = extras.get("imagen");
         Uri image = (Uri) img;
 
-        imageView.setImageURI(image);
+        //imageView.setImageURI(image);
         Bitmap bitmapResult = null;
         try {
             bitmapResult = MediaStore.Images.Media.getBitmap(this.getContentResolver() , image);
@@ -65,9 +65,9 @@ public class readerOCR extends AppCompatActivity {
             }else if (ocrText.contains("ESTADOS UNIDOS MEXICANOS")){
                 tipotxt.setText("ACTA DE NACIMIENTO");
                 resultText.setText(null);
-                textFinal += processNombre(image)+"\n";
-                textFinal += processFechaNacimiento(image)+"\n";
-                textFinal +=  processLugarNacimiento(image)+"\n";
+                textFinal += "Nombre: " +processNombre(image)+"\n";
+                textFinal +=  "Fecha de nacimiento: "+processFechaNacimiento(image)+"\n";
+                textFinal +=  "Lugar de nacimiento: "+processLugarNacimiento(image)+"\n";
                 resultText.setText(textFinal);
             }else{
                 resultText.setText(null);
@@ -87,8 +87,8 @@ public class readerOCR extends AppCompatActivity {
         int yc = (int) (bitmap.getHeight() * 0.28);//626
         Bitmap bitmapTemp = Bitmap.createBitmap(bitmap, 0, yc, (int) (bitmap.getWidth() ), 90);
             bitmap2 = Bitmap.createBitmap(bitmapTemp, 0, 0, bitmapTemp.getWidth(), bitmapTemp.getHeight(), matrix, true);
-            imageView.setImageBitmap(bitmap2);
-            rest = getTextFromImage(bitmap2);
+            //imageView.setImageBitmap(bitmap2);
+            rest = nombre(getTextFromImage(bitmap2));
             return rest;
     }
 //fecha de nacimiento
@@ -101,21 +101,21 @@ public class readerOCR extends AppCompatActivity {
         Bitmap bitmapTemp = Bitmap.createBitmap(bitmap, 0, yc, (int) (bitmap.getWidth() ), 90);
         bitmap2 = Bitmap.createBitmap(bitmapTemp, 0, 0, bitmapTemp.getWidth(), bitmapTemp.getHeight(), matrix, true);
         imageView.setImageBitmap(bitmap2);
-        rest = getTextFromImage(bitmap2);
+        rest = fechaNacimiento(getTextFromImage(bitmap2));
         return rest;
     }
     //fecha de nacimiento
     private String processLugarNacimiento(Bitmap bitmap) {
         Bitmap bitmap2;
-        String rest;
+        String result;
         Matrix matrix = new Matrix();
         //int yc = (int) ((bitmap.getHeight() ) - (bitmap.getHeight() * 0.19));
         int yc = (int) (bitmap.getHeight() * 0.34);//626
         Bitmap bitmapTemp = Bitmap.createBitmap(bitmap, 0, yc, (int) (bitmap.getWidth() ), 50);
         bitmap2 = Bitmap.createBitmap(bitmapTemp, 0, 0, bitmapTemp.getWidth(), bitmapTemp.getHeight(), matrix, true);
-        imageView.setImageBitmap(bitmap2);
-        rest = getTextFromImage(bitmap2);
-        return rest;
+        //imageView.setImageBitmap(bitmap2);
+        result = lugarNacimiento(getTextFromImage(bitmap2));
+        return result;
     }
 
 
@@ -137,13 +137,51 @@ public class readerOCR extends AppCompatActivity {
             Log.e("TEXTO",sB.toString());
             result = sB.toString();
         }
-        String ocrText = result.replaceAll("[-+.^*_]","");
+        String mayusculas = result.toUpperCase();
+        String replaceP = mayusculas.replaceAll("[-+.^*_]","");
+        String ocrText = replaceP.replaceAll("\n"," ");
         return ocrText;
     }
 
 
 
-    //_____________________ OCR para ine ife______________________________
+
+
+    private String  nombre(String text){
+        int index = 0;
+        String nomb = "";
+            String[] arrayTexto= text.split(" ");
+            if (arrayTexto.length >=4){
+                for (int recorrido = 1 ; recorrido <= 3 ; recorrido++ ){
+                    nomb+=arrayTexto[recorrido]+" ";
+                }
+            }else{
+                for (int recorrido = 1 ; recorrido <= arrayTexto.length ; recorrido++ ){
+                    nomb+=arrayTexto[recorrido]+" ";
+                }
+            }
+        return nomb;
+    }
+    private String fechaNacimiento(String text){
+        String remplace = text.replaceAll("[A-Za-z]","");
+        String[] arrayTexto= remplace.split(" ");
+        return remplace;
+    }
+
+
+    private String lugarNacimiento(String text){
+            int inicio = text.indexOf("LUGAR DE NACIMIENTO:");
+            int fin = text.indexOf(" ", inicio + 21);
+            String dom = text.substring(inicio + 21);
+            String[] arrayTexto= dom.split(" ");
+            /*String domicilio = "";
+            for (int y = 0; y < 6;y++ ){
+                domicilio += arrayTexto[y]+" ";
+            }*/
+        return dom;
+    }
+
+    //____________________-_____________________ OCR para ine ife______________________________
     String TAG="ImageOCR";
     ///ALgoritmo
     String textValorS="";
@@ -264,20 +302,6 @@ public class readerOCR extends AppCompatActivity {
 
     }
 
-    private void extractNameIFE(String s) {
-        String result = "";
-        String[] lines = s.split(" ");
-        for (int x = 0 ; x<= lines.length ; x++){
-            if (lines[x].equals("NOMBRE") ) {
-                result += lines[x+1]+" "+lines[x+2]+" "+lines[x+3];
-            }
-        }
-        textValorS +="\nNombre: "+result;
-        // txtresult.setText(textValorS);
-
-
-    }
-
 
     private void  getDomicilio(String text){
         if (list.size() == 1) {
@@ -361,6 +385,7 @@ public class readerOCR extends AppCompatActivity {
 
 
     public void datoUnico(String text,String tag, int separcion){
+        String result;
         int inicio = text.indexOf(tag);
         int fin = text.indexOf(" ", inicio + separcion);
         String textoTag = text.substring(inicio + separcion, fin);
