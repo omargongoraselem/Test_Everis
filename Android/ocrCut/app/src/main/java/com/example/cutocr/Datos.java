@@ -1,6 +1,7 @@
 package com.example.cutocr;
 
+import android.graphics.Bitmap;
+
 public class Datos {
-    String nombre;
-    String Domicilio;
+    public static Bitmap photoFinishBitmap = null;
 }

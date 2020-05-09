@@ -1,2 +1,2 @@
 rootProject.name='Cut OCR'
-include ':app'
+include ':app', ':scanlibrarys'

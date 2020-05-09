@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -18,6 +19,7 @@ import com.google.android.gms.vision.text.TextBlock;
 import com.google.android.gms.vision.text.TextRecognizer;
 
 import java.io.IOException;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -36,8 +38,16 @@ public class readerOCR extends AppCompatActivity {
         imageView = findViewById(R.id.img2);
         tipotxt = findViewById(R.id.txtTipo);
 
-        Bundle extras = getIntent().getExtras();
+        Bitmap photo = Datos.photoFinishBitmap;
+        if (photo != null) {
+           imageView.setImageDrawable(new BitmapDrawable(getResources(), photo));
+           getTextTipo(photo);
+        }
+
+     //   imageView.setImageDrawable(new BitmapDrawable(getResources(), NewScanActivity.getBitmap_transfer()));
+       /* Bundle extras = getIntent().getExtras();
         Object img = extras.get("imagen");
+
         Uri image = (Uri) img;
 
         //imageView.setImageURI(image);
@@ -47,9 +57,13 @@ public class readerOCR extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        if (!image.equals(null)){
+            imageView.setImageBitmap(bitmapResult);
+        }
 
-        getTextTipo(bitmapResult);
 
+        getTextTipo(NewScanActivity.getBitmap_transfer());
+*/
     }
 
 
@@ -187,7 +201,7 @@ public class readerOCR extends AppCompatActivity {
     String textValorS="";
     //reconocimiento de datos TAG existentes
     String[] identificador={"LOCALIDAD","DOMICILIO","CURP","CLAVE DE ELECTOR","ESTADO","MUNICIPIO","NOMBRE","SECCION","EMISION","VIGENCIA",
-            "FECHA DE NACIMIENTO"};
+            "FECHA DE NACIMIENTO","SEXO"};
     //Listapara almacenar TAGs encontrados en el documento
     String[] idLargos={"CLAVE","AÑO","FECHA"};
 
@@ -374,6 +388,11 @@ public class readerOCR extends AppCompatActivity {
                 break;
             case "VIGENCIA":
                 datoUnico(text,"VIGENCIA",9);
+                break;
+            case "EDAD":
+                datoUnico(text,"EDAD",5);
+            case "SEXO":
+                datoUnico(text,"EDAD",5);
                 break;
             case "FECHA DE NACIMIENTO":
                 datoUnico(text,"FECHA DE NACIMIENTO",20);

@@ -7,26 +7,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.MediaStore;
-import android.util.Log;
-import android.util.SparseArray;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.android.gms.vision.Frame;
-import com.google.android.gms.vision.text.TextBlock;
-import com.google.android.gms.vision.text.TextRecognizer;
+import com.example.cutocr.detectarborde.ScanActivity;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
-
-import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     ImageButton btn;
@@ -39,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         btn = findViewById(R.id.btnImagen);
-        img = findViewById(R.id.img);
+        img = findViewById(R.id.imgScan);
 
         img.setOnClickListener(this);
         btn.setOnClickListener(this);
@@ -51,11 +42,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btnImagen:
                 CropImage.startPickImageActivity(this);
                 break;
-            case R.id.img:
+            case R.id.imgScan:
                 if (newImage != null ){
                     Intent intent = new Intent(this,readerOCR.class);
                     intent.putExtra("imagen",newImage);
                     startActivity(intent);
+                    //startScan(newImage);
                 }
 
                 break;
@@ -91,5 +83,4 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         .start(this);
 
     }
-
 }
