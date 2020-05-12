@@ -13,20 +13,20 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".NewScanActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".detectarborde.ScanActivity" />
-        <activity android:name=".readerOCR" />
-        <activity android:name=".MainActivity">
             <!--intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter-->
+        </activity>
+        <activity android:name=".detectarborde.ScanActivity" />
+        <activity android:name=".readerOCR" />
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity" />
     </application>
